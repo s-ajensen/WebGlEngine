@@ -1,5 +1,7 @@
 # WebGlEngine
 
+## Please use Google Chrome to render this project 
+
 ## Intro
 This project consists of a very basic library for rendering 3D objects using WebGl. Seeing as most of my background is in strongly-typed languages such as C++/C#, the notion of using vanilla JavaScript to do anything other than count beans made me want to 'deallocate' myself, so I opted for using TypeScript.
 The TS source files are found in /src and their transpiled, vanilla JS gobbledegook that the webpage depends on is in /build.
