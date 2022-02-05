@@ -15,5 +15,5 @@ In an ideal world, a hypothetical user would be able to instantiate an instance 
 
 Originally, there was going to be a spinning table, but for the time being perhaps you will enjoy tinkering with this translucent cube.
 
-## Credit where due
-This project would not be possible without the aid of the [glMatrix team](https://glmatrix.net/) as well as [this](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) fantastic guide to WebGl provided by MDN.
+## Credit Where Due
+This project would not be possible without the efforts of the [glMatrix team](https://glmatrix.net/) as well as [this](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) fantastic guide to WebGl provided by MDN.
