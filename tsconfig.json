@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "module": "System",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "outFile": "./build/engine.js",
+        "sourceMap": true,
+        "lib": ["es5", "es6", "dom"],
+        "paths": {
+            "gl-matrix": ["node_modules/gl-matrix*"]
+        }
+    },
+    "files": [
+        "src/Engine.ts"
+    ]
+}
