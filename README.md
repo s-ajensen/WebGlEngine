@@ -11,6 +11,9 @@ If, for some reason, you wish to recompile the TypeScript, then doing so is as e
 The app should be accessible as a static page, though you may wish to [run it on a small HTTP server](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server)
 
 ## Configuration Options
-In an ideal world, a hypothetical user would be able to instantiate an instance of `EngineContext` and go to town adding new `GameObjects` and `Components` but this tends to be very buggy. As can be seen by `Engine.ts`, though, the framework provides and interface through which to create `GameObjects`, add a number of `Component` types such as materials and meshes, and even go as far as to apply custom shaders to those materials.
+In an ideal world, a hypothetical user would be able to instantiate an instance of `EngineContext` and go to town adding new `GameObjects` and `Components` but this tends to be very buggy. As can be seen by `Engine.ts`, though, the framework provides and interface through which to create `GameObjects`, add a number of `Component` types such as materials and meshes, and even go as far as to apply custom shaders to those materials. Simply drop an `EngineContext` instance pointing to a canvas element in a script and it's `BufferRenderer` will be able to render its encapsulated objects to it!
 
 Originally, there was going to be a spinning table, but for the time being perhaps you will enjoy tinkering with this translucent cube.
+
+## Credit where due
+This project would not be possible without the aid of the [glMatrix team](https://glmatrix.net/) as well as [this](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) fantastic guide to WebGl provided by MDN.
