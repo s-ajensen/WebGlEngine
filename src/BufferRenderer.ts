@@ -18,7 +18,7 @@ class BufferRenderer {
             [-0.0, 0.0, -6.0]);
 
         {
-            const numComponents = 2;
+            const numComponents = 3;
             const type = this.context.FLOAT;
             const normalize = false;
             const stride = 0;
@@ -54,6 +54,10 @@ class BufferRenderer {
                 material.shader.attributes.get('aVertexColor'));
         }
 
+        {
+            this.context.bindBuffer(this.context.ELEMENT_ARRAY_BUFFER, mesh.bindIndexBuffer());
+        }
+
         this.context.useProgram(material.shader.program);
         this.context.uniformMatrix4fv(
             material.shader.uniforms.get('uProjectionMatrix'),
@@ -64,7 +68,7 @@ class BufferRenderer {
             false,
             modelViewMatrix);
 
-        let vertexCount = mesh.positions.length;
-        this.context.drawArrays(this.context.TRIANGLE_STRIP, 0, vertexCount);
+        let vertexCount = 36;
+        this.context.drawElements(this.context.TRIANGLES, vertexCount, this.context.UNSIGNED_SHORT, 0);
     }
 }

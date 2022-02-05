@@ -1,5 +1,6 @@
 /// <reference path="EngineContext.ts"/>
 /// <reference path="./Components/Mesh.ts"/>
+/// <reference path="./Components/CubeMesh.ts"/>
 /// <reference path="./GameObjects/Camera.ts"/>
 /// <reference path="BufferRenderer.ts"/>
 
@@ -13,7 +14,7 @@ function main() {
     console.log(engineContext);
 
     let obj1 = engineContext.addObject(GameObject);
-    let mesh1 = obj1.addComponent(Mesh);
+    let mesh1 = obj1.addComponent(CubeMesh);
     let mat1 = obj1.addComponent(Material);
 
     const defaultVec = `
@@ -44,14 +45,45 @@ function main() {
     defaultShader.addUniforms(['uModelViewMatrix', 'uProjectionMatrix']);
 
     mesh1.positions = [
-        1.0, 1.0,
-        -1.0, 1.0,
-        1.0, -1.0,
-        -1.0, -1.0,
-    ];
+        // Front face
+        -1.0, -1.0,  1.0,
+         1.0, -1.0,  1.0,
+         1.0,  1.0,  1.0,
+        -1.0,  1.0,  1.0,
+      
+        // Back face
+        -1.0, -1.0, -1.0,
+        -1.0,  1.0, -1.0,
+         1.0,  1.0, -1.0,
+         1.0, -1.0, -1.0,
+      
+        // Top face
+        -1.0,  1.0, -1.0,
+        -1.0,  1.0,  1.0,
+         1.0,  1.0,  1.0,
+         1.0,  1.0, -1.0,
+      
+        // Bottom face
+        -1.0, -1.0, -1.0,
+         1.0, -1.0, -1.0,
+         1.0, -1.0,  1.0,
+        -1.0, -1.0,  1.0,
+      
+        // Right face
+         1.0, -1.0, -1.0,
+         1.0,  1.0, -1.0,
+         1.0,  1.0,  1.0,
+         1.0, -1.0,  1.0,
+      
+        // Left face
+        -1.0, -1.0, -1.0,
+        -1.0, -1.0,  1.0,
+        -1.0,  1.0,  1.0,
+        -1.0,  1.0, -1.0,
+      ];
 
-    mat1.config(defaultShader, [1.0, 0.0, 0.0, 1.0], mesh1.positions.length);
-    console.log(mat1.color);
+    mat1.config(defaultShader, [1.0, 0.0, 0.0, 1.0], 69);
+    console.log(mat1.colors);
 
     let cam = engineContext.addObject(Camera);
     cam.config(45, 0.1, 100.0);

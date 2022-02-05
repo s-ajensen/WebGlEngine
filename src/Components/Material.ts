@@ -3,17 +3,17 @@
 
 class Material extends IComponent {
     shader: Shader;
-    color: number[];
+    colors: number[];
 
     constructor(parent: GameObject) {
         super(parent, "material");
-        this.color = [];
+        this.colors = [];
     }
 
-    config(shader: Shader, color: number[], numVerts: number): void {
+    config(shader: Shader, color: number[], numFaces: number): void {
         this.shader = shader;
-        for(let i = 0; i < numVerts; i++) {
-            color.forEach(c => this.color.push(c));
+        for(let i = 0; i < numFaces; i++) {
+            color.forEach(c => this.colors.push(c));
         }
     }
 
@@ -23,7 +23,7 @@ class Material extends IComponent {
 
         context.bindBuffer(context.ARRAY_BUFFER, colorBuffer);
         context.bufferData(context.ARRAY_BUFFER,
-            new Float32Array(this.color),
+            new Float32Array(this.colors),
             context.STATIC_DRAW);
         return colorBuffer;
     }
