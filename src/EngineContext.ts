@@ -4,8 +4,10 @@ class EngineContext {
     canvasElementId: string;
     canvasWidth: number;
     canvasHeight: number;
+    renderer: BufferRenderer;
     context: WebGLRenderingContext;
     gameObjects: GameObject[];
+    mainCam: Camera;
 
     constructor(canvasElementId: string, canvasWidth: number, canvasHeight: number) {
         this.canvasElementId = canvasElementId;
@@ -36,4 +38,8 @@ class EngineContext {
         this.gameObjects.push(obj);
         return obj;
     }
+
+    
+    
+    
 }

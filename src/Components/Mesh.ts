@@ -1,4 +1,4 @@
-/// <reference path="../interfaces/IComponent.ts"/>
+/// <reference path="../Interfaces/IComponent.ts"/>
 
 class Mesh extends IComponent {
     positions: number[];

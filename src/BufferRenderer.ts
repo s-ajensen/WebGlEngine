@@ -11,11 +11,13 @@ class BufferRenderer {
         this.camera = camera;
     }
 
-    drawObject(mesh: Mesh, material: Material): void {
+    drawObject(obj: GameObject): void {
+        let mesh = obj.getMeshComponent();
+        let material = obj.getMaterialComponent()
         const modelViewMatrix = mat4.create();
-        mat4.translate(modelViewMatrix,
-            modelViewMatrix,
-            [-0.0, 0.0, -6.0]);
+
+        mat4.translate(modelViewMatrix, modelViewMatrix, obj.translation);
+        //mat4.rotate(modelViewMatrix, modelViewMatrix, obj.rotation);
 
         {
             const numComponents = 3;

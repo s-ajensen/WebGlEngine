@@ -4,16 +4,21 @@
 /// <reference path="./GameObjects/Camera.ts"/>
 /// <reference path="BufferRenderer.ts"/>
 
-main();
+main(1.0, 0.0, 1.0, 5.0);
 
+function main(red: number, green: number, blue: number, zoom: number) {
+    console.log(red);
+    console.log(green);
+    console.log(blue);
+    console.log(zoom);
 
-function main() {
     const engineContext = new EngineContext("glcanvas", 640, 480);
     engineContext.configCanvas();
 
     console.log(engineContext);
 
     let obj1 = engineContext.addObject(GameObject);
+    obj1.translation = vec3.fromValues(0.0, 0.0, -10 + zoom)
     let mesh1 = obj1.addComponent(CubeMesh);
     let mat1 = obj1.addComponent(Material);
 
@@ -46,49 +51,57 @@ function main() {
 
     mesh1.positions = [
         // Front face
-        -1.0, -1.0,  1.0,
-         1.0, -1.0,  1.0,
-         1.0,  1.0,  1.0,
-        -1.0,  1.0,  1.0,
-      
+        -1.0, -1.0, 1.0,
+        1.0, -1.0, 1.0,
+        1.0, 1.0, 1.0,
+        -1.0, 1.0, 1.0,
+
         // Back face
         -1.0, -1.0, -1.0,
-        -1.0,  1.0, -1.0,
-         1.0,  1.0, -1.0,
-         1.0, -1.0, -1.0,
-      
+        -1.0, 1.0, -1.0,
+        1.0, 1.0, -1.0,
+        1.0, -1.0, -1.0,
+
         // Top face
-        -1.0,  1.0, -1.0,
-        -1.0,  1.0,  1.0,
-         1.0,  1.0,  1.0,
-         1.0,  1.0, -1.0,
-      
+        -1.0, 1.0, -1.0,
+        -1.0, 1.0, 1.0,
+        1.0, 1.0, 1.0,
+        1.0, 1.0, -1.0,
+
         // Bottom face
         -1.0, -1.0, -1.0,
-         1.0, -1.0, -1.0,
-         1.0, -1.0,  1.0,
-        -1.0, -1.0,  1.0,
-      
+        1.0, -1.0, -1.0,
+        1.0, -1.0, 1.0,
+        -1.0, -1.0, 1.0,
+
         // Right face
-         1.0, -1.0, -1.0,
-         1.0,  1.0, -1.0,
-         1.0,  1.0,  1.0,
-         1.0, -1.0,  1.0,
-      
+        1.0, -1.0, -1.0,
+        1.0, 1.0, -1.0,
+        1.0, 1.0, 1.0,
+        1.0, -1.0, 1.0,
+
         // Left face
         -1.0, -1.0, -1.0,
-        -1.0, -1.0,  1.0,
-        -1.0,  1.0,  1.0,
-        -1.0,  1.0, -1.0,
-      ];
+        -1.0, -1.0, 1.0,
+        -1.0, 1.0, 1.0,
+        -1.0, 1.0, -1.0,
+    ];
 
-    mat1.config(defaultShader, [1.0, 0.0, 0.0, 1.0], 69);
+    mat1.config(defaultShader, [red, green, blue], 69);
     console.log(mat1.colors);
 
     let cam = engineContext.addObject(Camera);
     cam.config(45, 0.1, 100.0);
+    engineContext.mainCam = cam;
 
     let renderer = new BufferRenderer(engineContext.context, cam);
-    renderer.drawObject(mesh1, mat1);
+    engineContext.renderer = renderer;
 
+    engineContext.gameObjects.forEach(obj => {
+        if (obj.type == "generic") {
+            console.log(obj);
+            renderer.drawObject(obj);
+        }
+    });
 }
+

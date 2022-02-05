@@ -13,7 +13,22 @@
 </head>
 
 <body>
-  <p>Hello, World!</p>
+  <div class="sliders">
+    Red<input type="range" min="0" max="1" value="0.9" class="slider" step="0.05" id="red" onchange="update()"><br>
+    Green<input type="range" min="0" max="1" value="0.0" class="slider" step="0.05" id="green" onchange="update()"><br>
+    Blue<input type="range" min="0" max="1" value="0.0" class="slider" step="0.05" id="blue" onchange="update()"><br>
+    Zoom<input type="range" min="0" max="10" value="0.0" class="slider" step="0.05" id="zoom" onchange="update()"><br>
+  </div>
+  <script>
+    function update() {
+      let red = document.getElementById("red").value;
+      let green = document.getElementById("green").value;
+      let blue = document.getElementById("blue").value;
+      let zoom = document.getElementById("zoom").value;
+
+      main(parseFloat(red), parseFloat(green), parseFloat(blue), parseFloat(zoom));
+    }
+  </script>
   <canvas id="glcanvas"></canvas>
 </body>
 

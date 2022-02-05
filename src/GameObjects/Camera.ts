@@ -9,6 +9,7 @@ class Camera extends GameObject {
 
     constructor(context: WebGLRenderingContext) {
         super(context);
+        this.type = "camera";
     }
 
     config(degrees: number, clipNear: number, clipFar: number): void {

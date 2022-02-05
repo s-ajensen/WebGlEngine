@@ -1,4 +1,4 @@
-/// <reference path="../interfaces/IComponent.ts"/>
+/// <reference path="../Interfaces/IComponent.ts"/>
 /// <reference path="../Shader.ts"/>
 
 class Material extends IComponent {
@@ -14,6 +14,7 @@ class Material extends IComponent {
         this.shader = shader;
         for(let i = 0; i < numFaces; i++) {
             color.forEach(c => this.colors.push(c));
+            this.colors.push(Math.random());
         }
     }
 

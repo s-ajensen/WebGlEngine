@@ -1,14 +1,22 @@
-/// <reference path="./interfaces/IComponent.ts"/>
+/// <reference path="./Interfaces/IComponent.ts"/>
 /// <reference path="./Components/Material.ts"/>
 /// <reference path="./Components/Mesh.ts"/>
 
+let vec3: any;
+
 class GameObject {
+    type: string;
     glContext: WebGLRenderingContext;
     components: IComponent[];
+    translation: any;
+    rotation: any;
 
     constructor(context: WebGLRenderingContext) {
+        this.type = "generic";
         this.glContext = context;
         this.components = [];
+        this.translation = vec3.create();
+        this.rotation = vec3.create();
     }
 
     addComponent<T extends IComponent>(type: { new(parent: GameObject): T; }) : T {
