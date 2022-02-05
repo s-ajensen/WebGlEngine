@@ -49,6 +49,8 @@ function main(red: number, green: number, blue: number, zoom: number) {
     defaultShader.addAttributes(['aVertexPosition', 'aVertexColor']);
     defaultShader.addUniforms(['uModelViewMatrix', 'uProjectionMatrix']);
 
+    // Thank you to https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Creating_3D_objects_using_WebGL
+    // for the coordinates of each vertex
     mesh1.positions = [
         // Front face
         -1.0, -1.0, 1.0,
